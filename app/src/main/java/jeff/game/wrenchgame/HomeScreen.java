@@ -113,5 +113,7 @@ public class HomeScreen extends LinearLayout {
     }
 
     private void handleStart(View view) {
+        MainActivity.root.removeAllViews();
+        MainActivity.root.addView(new GamePlay(getContext()));
     }
 }
