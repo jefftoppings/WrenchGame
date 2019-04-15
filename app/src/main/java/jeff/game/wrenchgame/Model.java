@@ -1,18 +1,22 @@
 package jeff.game.wrenchgame;
 
-import java.util.ArrayList;
+
+import java.util.Random;
 
 public class Model {
 
-    ArrayList<Wrench> wrenches;
     Stickman stickman;
+    Wrench wrench;
+    Random random;
 
     public Model() {
-        wrenches = new ArrayList<>();
+        random = new Random();
         stickman = new Stickman(MainActivity.width / 2, MainActivity.height - 800);
+        newWrench();
     }
 
-    public void setStickman(Stickman stickman) {
-        this.stickman = stickman;
+    public void newWrench() {
+        wrench = new Wrench(random.nextInt(MainActivity.width - 200), -200);
     }
+
 }
