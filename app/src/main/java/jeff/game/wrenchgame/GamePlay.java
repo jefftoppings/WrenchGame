@@ -14,12 +14,16 @@ public class GamePlay extends View {
     Paint paint;
     Random random;
     int score;
+    Model model;
+    boolean gameOver;
 
     public GamePlay(Context context) {
         super(context);
         random = new Random();
         paint = new Paint();
         score = 0;
+        model = new Model();
+        gameOver = false;
         setBackgroundColor(Color.rgb(237, 247, 210));
 
         invalidate();
