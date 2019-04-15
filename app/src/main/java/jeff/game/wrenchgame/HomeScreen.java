@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -92,6 +93,7 @@ public class HomeScreen extends LinearLayout {
         startGame.setText("Start Game");
         startGame.setTextSize(20);
         startGame.setWidth(750);
+        startGame.setOnClickListener(this::handleStart);
 
         Space space = new Space(getContext());
         space.setMinimumWidth(200);
@@ -99,10 +101,17 @@ public class HomeScreen extends LinearLayout {
         instructions.setText("Instructions");
         instructions.setTextSize(20);
         instructions.setWidth(750);
+        instructions.setOnClickListener(this::handleInstructions);
 
         buttonContainer.addView(startGame);
         buttonContainer.addView(space);
         buttonContainer.addView(instructions);
         addView(buttonContainer);
+    }
+
+    private void handleInstructions(View view) {
+    }
+
+    private void handleStart(View view) {
     }
 }
