@@ -8,8 +8,14 @@ public class StickmanController {
     GamePlay view;
     Model model;
 
-    public StickmanController() {
+    enum State {
+        READY, MOVING_LEFT, MOVING_RIGHT
+    }
 
+    State state;
+
+    public StickmanController() {
+        state = State.READY;
     }
 
     public void setView(GamePlay view) {
@@ -25,16 +31,32 @@ public class StickmanController {
         // determine which way to move stickman
         int half = MainActivity.width / 2;
 
-        if (e.getX() < half) {
-            // move left
-            model.stickman.moveLeft();
-        }
-        else {
-            // move right
-            model.stickman.moveRight();
+        switch (e.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                if (e.getX() < half) {
+                    model.stickman.moveLeft();
+                    view.invalidate();
+                }
+                else {
+                    model.stickman.moveRight();
+                    view.invalidate();
+                }
+                break;
+            case MotionEvent.ACTION_MOVE:
+                if (e.getX() < half) {
+                    model.stickman.moveLeft();
+                    view.invalidate();
+                }
+                else {
+                    model.stickman.moveRight();
+                    view.invalidate();
+                }
+                break;
+            case MotionEvent.ACTION_UP:
+                break;
         }
 
         view.invalidate();
-        return false;
+        return true;
     }
 }
