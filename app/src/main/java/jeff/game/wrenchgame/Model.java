@@ -9,7 +9,7 @@ public class Model {
 
     public Model() {
         wrenches = new ArrayList<>();
-        stickman = new Stickman(MainActivity.width / 2, MainActivity.height - 100);
+        stickman = new Stickman(MainActivity.width / 2, MainActivity.height - 800);
     }
 
     public void setStickman(Stickman stickman) {

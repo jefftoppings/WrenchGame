@@ -1,6 +1,8 @@
 package jeff.game.wrenchgame;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -35,6 +37,12 @@ public class GamePlay extends View {
         this.canvas = canvas;
 
         displayScore(canvas);
+        drawStickman(canvas);
+    }
+
+    private void drawStickman(Canvas canvas) {
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.stickman);
+        canvas.drawBitmap(bitmap, model.stickman.x, model.stickman.y, paint);
     }
 
     private void displayScore(Canvas canvas) {
