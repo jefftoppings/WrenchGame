@@ -3,11 +3,11 @@ package jeff.game.wrenchgame;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.graphics.drawable.GradientDrawable;
-import android.os.Build;
 import android.view.Gravity;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Space;
 import android.widget.TextView;
 
 public class HomeScreen extends LinearLayout {
@@ -29,7 +29,16 @@ public class HomeScreen extends LinearLayout {
         instructions = new Button(context);
 
         setTitles();
+        addSpace();
+        setImages();
+        addSpace();
         setButtons();
+    }
+
+    private void addSpace() {
+        Space space = new Space(getContext());
+        space.setMinimumHeight((int)(MainActivity.height*0.1));
+        addView(space);
     }
 
     private void setTitles() {
@@ -49,6 +58,32 @@ public class HomeScreen extends LinearLayout {
         addView(subtitle);
     }
 
+    private void setImages() {
+
+        int imgWidth = 724;
+        int imgHeight = 210;
+
+        LinearLayout imageContainer = new LinearLayout(getContext());
+        imageContainer.setMinimumWidth(MainActivity.width);
+        imageContainer.setGravity(Gravity.CENTER);
+
+        ImageView imageView1 = new ImageView(getContext());
+        imageView1.setImageResource(R.drawable.wrench1);
+        imageView1.setLayoutParams(new LayoutParams((int)(imgWidth*0.7), (int)(imgHeight*0.7)));
+
+        Space space = new Space(getContext());
+        space.setMinimumWidth(300);
+
+        ImageView imageView2 = new ImageView(getContext());
+        imageView2.setImageResource(R.drawable.wrench2);
+        imageView2.setLayoutParams(new LayoutParams((int)(imgWidth*0.7), (int)(imgHeight*0.7)));
+
+        imageContainer.addView(imageView1);
+        imageContainer.addView(space);
+        imageContainer.addView(imageView2);
+        addView(imageContainer);
+    }
+
     private void setButtons() {
         LinearLayout buttonContainer = new LinearLayout(getContext());
         buttonContainer.setMinimumWidth(MainActivity.width);
@@ -58,11 +93,15 @@ public class HomeScreen extends LinearLayout {
         startGame.setTextSize(20);
         startGame.setWidth(750);
 
+        Space space = new Space(getContext());
+        space.setMinimumWidth(200);
+
         instructions.setText("Instructions");
         instructions.setTextSize(20);
         instructions.setWidth(750);
 
         buttonContainer.addView(startGame);
+        buttonContainer.addView(space);
         buttonContainer.addView(instructions);
         addView(buttonContainer);
     }
