@@ -18,10 +18,10 @@ public class Stickman {
     }
 
     public void moveLeft() {
-        x -= 30;
+        x -= 20;
     }
 
     public void moveRight() {
-        x += 30;
+        x += 20;
     }
 }

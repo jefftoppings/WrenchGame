@@ -20,6 +20,7 @@ public class GamePlay extends View {
     Model model;
     StickmanController controller;
     boolean gameOver;
+    Bitmap stickmanBitmap;
 
     @SuppressLint("ClickableViewAccessibility")
     public GamePlay(Context context) {
@@ -32,6 +33,7 @@ public class GamePlay extends View {
         controller.setModel(model);
         controller.setView(this);
         this.setOnTouchListener(controller::handleTouch);
+        stickmanBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.stickman);
         gameOver = false;
         setBackgroundColor(Color.rgb(237, 247, 210));
 
@@ -48,8 +50,7 @@ public class GamePlay extends View {
     }
 
     private void drawStickman(Canvas canvas) {
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.stickman);
-        canvas.drawBitmap(bitmap, model.stickman.x, model.stickman.y, paint);
+        canvas.drawBitmap(stickmanBitmap, model.stickman.x, model.stickman.y, paint);
     }
 
     private void displayScore(Canvas canvas) {
