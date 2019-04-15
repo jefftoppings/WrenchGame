@@ -23,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
-        width = size.y;
-        height = size.x;
+        width = size.x;
+        height = size.y;
 
         LinearLayout root = findViewById(R.id.root);
 
