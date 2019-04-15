@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
 
+    static LinearLayout root;
     static int width, height;
 
     @Override
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         width = size.x;
         height = size.y;
 
-        LinearLayout root = findViewById(R.id.root);
+        root = findViewById(R.id.root);
 
         root.addView(new HomeScreen(this));
     }
