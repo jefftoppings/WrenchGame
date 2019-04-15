@@ -3,6 +3,7 @@ package jeff.game.wrenchgame;
 public class Stickman {
 
     int x, y;
+    private static final int STICKMAN_WIDTH = 100;
 
     public Stickman(int x, int y) {
         this.x = x;
@@ -18,10 +19,14 @@ public class Stickman {
     }
 
     public void moveLeft() {
-        x -= 20;
+        if (x > STICKMAN_WIDTH) {
+            x -= 20;
+        }
     }
 
     public void moveRight() {
-        x += 20;
+        if (x < MainActivity.width - STICKMAN_WIDTH - 200) {
+            x += 20;
+        }
     }
 }
