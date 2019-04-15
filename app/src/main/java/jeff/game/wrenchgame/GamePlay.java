@@ -1,5 +1,6 @@
 package jeff.game.wrenchgame;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -17,14 +18,20 @@ public class GamePlay extends View {
     Random random;
     int score;
     Model model;
+    StickmanController controller;
     boolean gameOver;
 
+    @SuppressLint("ClickableViewAccessibility")
     public GamePlay(Context context) {
         super(context);
         random = new Random();
         paint = new Paint();
         score = 0;
         model = new Model();
+        controller = new StickmanController();
+        controller.setModel(model);
+        controller.setView(this);
+        this.setOnTouchListener(controller::handleTouch);
         gameOver = false;
         setBackgroundColor(Color.rgb(237, 247, 210));
 

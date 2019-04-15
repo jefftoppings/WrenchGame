@@ -16,4 +16,12 @@ public class Stickman {
     public void setY(int y) {
         this.y = y;
     }
+
+    public void moveLeft() {
+        x -= 10;
+    }
+
+    public void moveRight() {
+        x += 10;
+    }
 }
