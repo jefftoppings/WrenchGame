@@ -43,7 +43,7 @@ public class HomeScreen extends LinearLayout {
     }
 
     private void setTitles() {
-        title.setText("Dodgeball Training");
+        title.setText("Stickman Dodgeball");
         title.setTextSize(60);
         title.setTextAlignment(TEXT_ALIGNMENT_CENTER);
         title.setTypeface(null, Typeface.BOLD);
