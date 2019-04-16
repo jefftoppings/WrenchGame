@@ -18,7 +18,7 @@ public class GamePlay extends View {
     Canvas canvas;
     Paint paint;
     Random random;
-    int score;
+    int score, speed;
     Model model;
     StickmanController controller;
     boolean gameOver;
@@ -33,6 +33,7 @@ public class GamePlay extends View {
         random = new Random();
         paint = new Paint();
         score = 0;
+        speed = 100;
         model = new Model();
         controller = new StickmanController();
         controller.setModel(model);
@@ -43,7 +44,7 @@ public class GamePlay extends View {
         wrenchBitmap = Bitmap.createScaledBitmap(wrenchBitmap,(int)(wrenchBitmap.getWidth()*0.2),
                 (int)(wrenchBitmap.getHeight()*0.2), true);
 
-        mPxPerSecond = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 100,
+        mPxPerSecond = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, speed,
                 getResources().getDisplayMetrics());
 
         gameOver = false;
@@ -84,6 +85,13 @@ public class GamePlay extends View {
 
             // handle scoring
             score++;
+
+            // speed up next wrench
+            if (speed < 200) {
+                speed *= 1.25;
+            }
+            mPxPerSecond = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, speed,
+                    getResources().getDisplayMetrics());
         }
 
         transform.reset();
