@@ -77,12 +77,13 @@ public class GamePlay extends View {
             model.newWrench();
 
             // handle scoring
+            score++;
         }
 
         transform.reset();
         model.wrench.y = (int) movedDistance;
         transform.postTranslate(model.wrench.x, model.wrench.y);
-        
+
         canvas.drawBitmap(wrenchBitmap, transform, paint);
 
         invalidate();
