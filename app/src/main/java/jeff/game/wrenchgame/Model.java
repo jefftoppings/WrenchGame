@@ -19,27 +19,20 @@ public class Model {
         wrench = new Wrench(random.nextInt(MainActivity.width - 400), 0);
     }
 
-    public void moveWrench() {
-        wrench.moveWrench();
-    }
-
     public boolean collision() {
         int wrenchX1 = wrench.x;
         int wrenchX2 = (int) (wrench.x + (724 * 0.2));
+        int wrenchHeight = 210;
         int stickmanX1 = stickman.x;
         int stickmanX2 = stickman.x + 78;
+        int stickmanHeight = 156;
 
-        if (wrench.y >= stickman.y) {
-            if (wrenchX1 < stickmanX1) {
-                if (stickmanX1 < wrenchX2 && wrenchX2 > stickmanX2) {
-                    return true;
-                }
-            } else {
-                if (wrenchX2 > stickmanX2) {
-                    if (stickmanX1 < wrenchX1 && wrenchX1 < stickmanX2) {
-                        return true;
-                    }
-                }
+        if ((wrenchHeight + wrench.y >= stickman.y) &&
+                (wrench.y <= stickman.y + stickmanHeight)) {
+            if ((stickmanX1 <= wrenchX1 && wrenchX1 <= stickmanX2) ||
+                    (stickmanX1 <= wrenchX2 && wrenchX2 <= stickmanX2) ||
+                    (wrenchX1 <= stickmanX1 && stickmanX2 >= wrenchX2)) {
+                return true;
             }
         }
         return false;

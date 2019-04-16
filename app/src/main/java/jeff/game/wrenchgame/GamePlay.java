@@ -74,7 +74,6 @@ public class GamePlay extends View {
 
         // determine if collision happened
         if (model.collision()) {
-            System.out.println("Hit");
             MainActivity.root.removeAllViews();
             MainActivity.root.addView(new GameOver(getContext(), score));
             return;
