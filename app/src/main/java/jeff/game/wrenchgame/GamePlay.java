@@ -71,6 +71,12 @@ public class GamePlay extends View {
 
         float movedDistance = secondsPassed * mPxPerSecond;
 
+
+        if (movedDistance > MainActivity.height) {
+            movedDistance = 0;
+            startTime = -1;
+        }
+
         transform.reset();
         transform.postTranslate(0, movedDistance);
 
