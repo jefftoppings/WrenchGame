@@ -6,6 +6,7 @@ import android.graphics.Typeface;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Space;
 import android.widget.TextView;
@@ -62,6 +63,27 @@ public class GameOver extends LinearLayout {
     }
 
     private void setImages() {
+        int imgWidth = 78;
+        int imgHeight = 156;
+
+        if (score >= 10) {
+            // unlock the purple cobra for next game
+            LinearLayout container = new LinearLayout(getContext());
+            container.setGravity(Gravity.CENTER);
+            addView(container);
+
+            ImageView imageView1 = new ImageView(getContext());
+            imageView1.setImageResource(R.drawable.purple_stickman);
+            imageView1.setLayoutParams(new LayoutParams(imgWidth, imgHeight));
+            container.addView(imageView1);
+
+            TextView caption = new TextView(getContext());
+            caption.setText(getContext().getString(R.string.unlock_purple_cobra));
+            caption.setTextSize(20);
+            caption.setTextAlignment(TEXT_ALIGNMENT_CENTER);
+            caption.setTextColor(Color.BLACK);
+            container.addView(caption);
+        }
     }
 
     private void setButtons() {

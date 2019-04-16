@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Wrench Game</string>
+    <string name="unlock_purple_cobra">You unlocked the purple cobra stickman!</string>
 </resources>
