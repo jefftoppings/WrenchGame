@@ -19,4 +19,7 @@ public class Model {
         wrench = new Wrench(random.nextInt(MainActivity.width - 200), -200);
     }
 
+    public void moveWrench() {
+        wrench.moveWrench();
+    }
 }

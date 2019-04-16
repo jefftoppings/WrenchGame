@@ -6,7 +6,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.util.TypedValue;
 import android.view.View;
 
 import java.util.Random;
@@ -21,6 +23,9 @@ public class GamePlay extends View {
     StickmanController controller;
     boolean gameOver;
     Bitmap stickmanBitmap, wrenchBitmap;
+    long startTime = -1;
+    float mPxPerSecond;
+    Matrix transform = new Matrix();
 
     @SuppressLint("ClickableViewAccessibility")
     public GamePlay(Context context) {
@@ -37,6 +42,10 @@ public class GamePlay extends View {
         wrenchBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.wrench1);
         wrenchBitmap = Bitmap.createScaledBitmap(wrenchBitmap,(int)(wrenchBitmap.getWidth()*0.5),
                 (int)(wrenchBitmap.getHeight()*0.5), true);
+
+        mPxPerSecond = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10,
+                getResources().getDisplayMetrics());
+
         gameOver = false;
         setBackgroundColor(Color.rgb(237, 247, 210));
 
@@ -54,7 +63,20 @@ public class GamePlay extends View {
     }
 
     private void drawWrenches(Canvas canvas) {
-        canvas.drawBitmap(wrenchBitmap, model.wrench.x, model.wrench.y, paint);
+        if (startTime == -1) {
+            startTime = getDrawingTime();
+        }
+        long currentTime = getDrawingTime();
+        float secondsPassed = (currentTime - startTime) / 1000f;
+
+        float movedDistance = secondsPassed * mPxPerSecond;
+
+        transform.reset();
+        transform.postTranslate(0, movedDistance);
+
+        canvas.drawBitmap(wrenchBitmap, transform, paint);
+
+        invalidate();
     }
 
     private void drawStickman(Canvas canvas) {
