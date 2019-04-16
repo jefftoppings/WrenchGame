@@ -75,10 +75,11 @@ public class GamePlay extends View {
         if (movedDistance > MainActivity.height) {
             movedDistance = 0;
             startTime = -1;
+            model.newWrench();
         }
 
         transform.reset();
-        transform.postTranslate(0, movedDistance);
+        transform.postTranslate(model.wrench.x, movedDistance);
 
         canvas.drawBitmap(wrenchBitmap, transform, paint);
 
