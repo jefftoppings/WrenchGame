@@ -39,7 +39,12 @@ public class GamePlay extends View {
         controller.setModel(model);
         controller.setView(this);
         this.setOnTouchListener(controller::handleTouch);
-        stickmanBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.stickman);
+        if (MainActivity.purpleCobra) {
+            stickmanBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.purple_stickman);
+        }
+        else {
+            stickmanBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.stickman);
+        }
         wrenchBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.wrench1);
         wrenchBitmap = Bitmap.createScaledBitmap(wrenchBitmap,(int)(wrenchBitmap.getWidth()*0.2),
                 (int)(wrenchBitmap.getHeight()*0.2), true);

@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
 
+    static boolean purpleCobra = false;
     static LinearLayout root;
     static int width, height;
 

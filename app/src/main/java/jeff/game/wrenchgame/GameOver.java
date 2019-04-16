@@ -66,8 +66,10 @@ public class GameOver extends LinearLayout {
         int imgWidth = 78;
         int imgHeight = 156;
 
-        if (score >= 10) {
+        if (score >= 10 && !MainActivity.purpleCobra) {
             // unlock the purple cobra for next game
+            MainActivity.purpleCobra = true;
+
             LinearLayout container = new LinearLayout(getContext());
             container.setGravity(Gravity.CENTER);
             addView(container);
