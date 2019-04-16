@@ -35,6 +35,8 @@ public class GamePlay extends View {
         this.setOnTouchListener(controller::handleTouch);
         stickmanBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.stickman);
         wrenchBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.wrench1);
+        wrenchBitmap = Bitmap.createScaledBitmap(wrenchBitmap,(int)(wrenchBitmap.getWidth()*0.5),
+                (int)(wrenchBitmap.getHeight()*0.5), true);
         gameOver = false;
         setBackgroundColor(Color.rgb(237, 247, 210));
 
@@ -52,8 +54,6 @@ public class GamePlay extends View {
     }
 
     private void drawWrenches(Canvas canvas) {
-        wrenchBitmap = Bitmap.createScaledBitmap(wrenchBitmap,(int)(wrenchBitmap.getWidth()*0.5),
-                (int)(wrenchBitmap.getHeight()*0.5), true);
         canvas.drawBitmap(wrenchBitmap, model.wrench.x, model.wrench.y, paint);
     }
 
