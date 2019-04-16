@@ -75,6 +75,8 @@ public class GamePlay extends View {
         // determine if collision happened
         if (model.collision()) {
             System.out.println("Hit");
+            MainActivity.root.removeAllViews();
+            MainActivity.root.addView(new GameOver(getContext(), score));
             return;
         }
 
@@ -89,9 +91,13 @@ public class GamePlay extends View {
             // speed up next wrench
             if (speed < 200) {
                 speed *= 1.25;
+                mPxPerSecond = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, speed,
+                        getResources().getDisplayMetrics());
+                wrenchBitmap.recycle();
+                wrenchBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.wrench1);
+                wrenchBitmap = Bitmap.createScaledBitmap(wrenchBitmap,(int)(wrenchBitmap.getWidth()*0.2),
+                        (int)(wrenchBitmap.getHeight()*0.2), true);
             }
-            mPxPerSecond = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, speed,
-                    getResources().getDisplayMetrics());
         }
 
         transform.reset();
