@@ -74,6 +74,8 @@ public class GamePlay extends View {
 
         // determine if collision happened
         if (model.collision()) {
+            System.out.println("Hit\n\n" + "\tWrench " + model.wrench.x + " " + model.wrench.y +
+                    "\n\tStick " + model.stickman.x + " " + model.stickman.y);
             MainActivity.root.removeAllViews();
             MainActivity.root.addView(new GameOver(getContext(), score));
             return;
@@ -114,7 +116,7 @@ public class GamePlay extends View {
 
     private void displayScore(Canvas canvas) {
         paint.setColor(Color.BLACK);
-        paint.setTextSize(60);
+        paint.setTextSize(80);
         canvas.drawText("Score: " + score, 60, 100, paint);
     }
 

@@ -27,11 +27,13 @@ public class Model {
         int stickmanX2 = stickman.x + 78;
         int stickmanHeight = 156;
 
-        if ((wrenchHeight + wrench.y >= stickman.y) &&
-                (wrench.y <= stickman.y + stickmanHeight)) {
-            if ((stickmanX1 <= wrenchX1 && wrenchX1 <= stickmanX2) ||
-                    (stickmanX1 <= wrenchX2 && wrenchX2 <= stickmanX2) ||
-                    (wrenchX1 <= stickmanX1 && stickmanX2 >= wrenchX2)) {
+        if (wrenchHeight + wrench.y >= stickman.y) {
+            if (stickmanX1 <= wrenchX1 && wrenchX1 <= stickmanX2) {
+                System.out.println("left side of wrench");
+                return true;
+            }
+            if (stickmanX1 <= wrenchX2 && wrenchX2 <= stickmanX2) {
+                System.out.println("right side of wrench");
                 return true;
             }
         }
