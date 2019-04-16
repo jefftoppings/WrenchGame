@@ -40,10 +40,10 @@ public class GamePlay extends View {
         this.setOnTouchListener(controller::handleTouch);
         stickmanBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.stickman);
         wrenchBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.wrench1);
-        wrenchBitmap = Bitmap.createScaledBitmap(wrenchBitmap,(int)(wrenchBitmap.getWidth()*0.5),
-                (int)(wrenchBitmap.getHeight()*0.5), true);
+        wrenchBitmap = Bitmap.createScaledBitmap(wrenchBitmap,(int)(wrenchBitmap.getWidth()*0.2),
+                (int)(wrenchBitmap.getHeight()*0.2), true);
 
-        mPxPerSecond = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10,
+        mPxPerSecond = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50,
                 getResources().getDisplayMetrics());
 
         gameOver = false;
