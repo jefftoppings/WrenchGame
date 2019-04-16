@@ -16,7 +16,7 @@ public class Model {
     }
 
     public void newWrench() {
-        wrench = new Wrench(random.nextInt(MainActivity.width - 200), -200);
+        wrench = new Wrench(random.nextInt(MainActivity.width - 400), 0);
     }
 
     public void moveWrench() {

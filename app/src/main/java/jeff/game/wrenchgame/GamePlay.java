@@ -43,7 +43,7 @@ public class GamePlay extends View {
         wrenchBitmap = Bitmap.createScaledBitmap(wrenchBitmap,(int)(wrenchBitmap.getWidth()*0.2),
                 (int)(wrenchBitmap.getHeight()*0.2), true);
 
-        mPxPerSecond = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50,
+        mPxPerSecond = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 100,
                 getResources().getDisplayMetrics());
 
         gameOver = false;
@@ -71,16 +71,18 @@ public class GamePlay extends View {
 
         float movedDistance = secondsPassed * mPxPerSecond;
 
-
         if (movedDistance > MainActivity.height) {
             movedDistance = 0;
             startTime = -1;
             model.newWrench();
+
+            // handle scoring
         }
 
         transform.reset();
-        transform.postTranslate(model.wrench.x, movedDistance);
-
+        model.wrench.y = (int) movedDistance;
+        transform.postTranslate(model.wrench.x, model.wrench.y);
+        
         canvas.drawBitmap(wrenchBitmap, transform, paint);
 
         invalidate();
