@@ -71,6 +71,12 @@ public class GamePlay extends View {
 
         float movedDistance = secondsPassed * mPxPerSecond;
 
+        // determine if collision happened
+        if (model.collision()) {
+            System.out.println("Hit");
+            return;
+        }
+
         if (movedDistance > MainActivity.height) {
             movedDistance = 0;
             startTime = -1;
