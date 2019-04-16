@@ -110,6 +110,8 @@ public class HomeScreen extends LinearLayout {
     }
 
     private void handleInstructions(View view) {
+        MainActivity.root.removeAllViews();
+        MainActivity.root.addView(new Instructions(getContext()));
     }
 
     private void handleStart(View view) {
