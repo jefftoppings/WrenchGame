@@ -66,9 +66,10 @@ public class GameOver extends LinearLayout {
         int imgWidth = 78;
         int imgHeight = 156;
 
-        if (score >= 10 && !MainActivity.purpleCobra) {
+        if (score >= 20 && !MainActivity.purpleCobra) {
             // unlock the purple cobra for next game
             MainActivity.purpleCobra = true;
+            MainActivity.avgJoe = false;
 
             LinearLayout container = new LinearLayout(getContext());
             container.setGravity(Gravity.CENTER);
@@ -81,6 +82,27 @@ public class GameOver extends LinearLayout {
 
             TextView caption = new TextView(getContext());
             caption.setText(getContext().getString(R.string.unlock_purple_cobra));
+            caption.setTextSize(20);
+            caption.setTextAlignment(TEXT_ALIGNMENT_CENTER);
+            caption.setTextColor(Color.BLACK);
+            container.addView(caption);
+        }
+        else if (score >= 10 && !MainActivity.avgJoe) {
+            // unlock the average joe for next game
+            MainActivity.avgJoe = true;
+            MainActivity.purpleCobra = false;
+
+            LinearLayout container = new LinearLayout(getContext());
+            container.setGravity(Gravity.CENTER);
+            addView(container);
+
+            ImageView imageView1 = new ImageView(getContext());
+            imageView1.setImageResource(R.drawable.yellow_stickman);
+            imageView1.setLayoutParams(new LayoutParams(imgWidth, imgHeight));
+            container.addView(imageView1);
+
+            TextView caption = new TextView(getContext());
+            caption.setText(getContext().getString(R.string.unlock_avg_joe));
             caption.setTextSize(20);
             caption.setTextAlignment(TEXT_ALIGNMENT_CENTER);
             caption.setTextColor(Color.BLACK);

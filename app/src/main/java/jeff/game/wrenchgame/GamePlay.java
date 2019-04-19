@@ -44,6 +44,9 @@ public class GamePlay extends View {
         if (MainActivity.purpleCobra) {
             stickmanBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.purple_stickman);
         }
+        else if (MainActivity.avgJoe) {
+            stickmanBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.yellow_stickman);
+        }
         else {
             stickmanBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.stickman);
         }
