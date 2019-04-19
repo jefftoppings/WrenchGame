@@ -30,6 +30,8 @@ public class GamePlay extends View {
     @SuppressLint("ClickableViewAccessibility")
     public GamePlay(Context context) {
         super(context);
+        setMinimumHeight(MainActivity.height);
+        setMinimumWidth(MainActivity.width);
         random = new Random();
         paint = new Paint();
         score = 0;

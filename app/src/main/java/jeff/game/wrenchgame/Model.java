@@ -11,7 +11,7 @@ public class Model {
 
     public Model() {
         random = new Random();
-        stickman = new Stickman(MainActivity.width / 2, MainActivity.height - 800);
+        stickman = new Stickman(MainActivity.width / 2, MainActivity.height - 650);
         newWrench();
     }
 
